@@ -1,21 +1,24 @@
 <div class="jumbotron border text-center m-5 p-5 bg-light">
   <h1 class="text-primary">Calculator on CPU Scheduling Algorithms</h1>
-  <div>
+  <a (click)="refreshPage()" class="btn btn-success text-center"><i class="fas fa-sync-alt"></i></a>
+  <div class="mt-5">
     Choose the algorithm from the below options:
-    <form id="algorithm" class="mb-5">
+    <form id="algorithm" class="mb-5 mt-5">
       <div class="row">
-        <select class="col-6 w-25 mx-auto" id="algorithm" name="algorithm" (click)="getAlgorithm($event.target.value)">
+        <div class="col-2"></div>
+        <select class="col-4 w-25 mx-auto" id="algorithm" name="algorithm" (click)="getAlgorithm($event.target.value)">
           <option disabled selected value> -- select an option -- </option>
           <option value='fcfs'>FCFS</option>
           <option value='sjf'>SJF</option>
           <option value='priority'>Priority</option>
           <option value='roundrobin'>RoundRobin</option>
         </select>
-        <select class="col-6 w-25 mx-auto" id="at" name="at" (click)="getArrivalTime($event.target.value)">
+        <select class="col-4 w-25 mx-auto" id="at" name="at" (click)="getArrivalTime($event.target.value)">
           <option disabled selected value> -- select an option -- </option>
           <option value='T'>With Arrival Time</option>
           <option value='F'>Without Arrival Time</option>
         </select>
+        <div class="col-2"></div> 
       </div>
       
     </form>
@@ -66,7 +69,7 @@
     </div>
 
     <div formArrayName="arrivalTime" *ngIf="withArrival=='T'">
-      <label for="arrivalTime" class="text-primary h5">Arrival burstTime :</label>
+      <label for="arrivalTime" class="text-primary h5">Arrival Time :</label>
       <i class="fas fa-plus-circle m-2 fa-lg" (click)="onAddArrivalTime()"></i>
       
       <div class="form-group" *ngFor="let bt of processForm.get('arrivalTime').controls let i =index">
